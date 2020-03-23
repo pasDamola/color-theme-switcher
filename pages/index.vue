@@ -1,13 +1,20 @@
 <template class="dark_background">
   <v-container>
-    <v-toolbar dense floating style="background : hsl(209, 23%, 22%);">
-      <v-text-field
-        hide-details
-        prepend-inner-icon="search"
-        single-line
-        dense
-      ></v-text-field>
-    </v-toolbar>
+    <v-text-field
+      hide-details
+      prepend-icon="mdi-magnify"
+      single-line
+      dense
+      solo
+      placeholder="Search for a country..."
+    ></v-text-field>
+    <v-select
+      :items="items"
+      label="Solo field"
+      dense
+      solo
+      color="hsl(209, 23%, 22%);"
+    ></v-select>
     <v-row>
       <v-col v-for="n in 4" :key="n" cols="12" sm="3">
         <v-card class="mx-auto" max-width="400">
@@ -75,7 +82,9 @@
 
 <script>
 export default {
-  components: {}
+  data: () => ({
+    items: ['Foo', 'Bar', 'Fizz', 'Buzz']
+  })
 }
 </script>
 <style>
