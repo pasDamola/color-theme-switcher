@@ -1,20 +1,29 @@
 <template class="dark_background">
   <v-container>
-    <v-text-field
-      hide-details
-      prepend-icon="mdi-magnify"
-      single-line
-      dense
-      solo
-      placeholder="Search for a country..."
-    ></v-text-field>
-    <v-select
-      :items="items"
-      label="Solo field"
-      dense
-      solo
-      color="hsl(209, 23%, 22%);"
-    ></v-select>
+    <v-row>
+      <v-col cols="9">
+        <v-text-field
+          hide-details
+          prepend-icon="mdi-magnify"
+          single-line
+          dense
+          solo
+          background-color="hsl(209, 23%, 22%)"
+          placeholder="Search for a country..."
+          style="width : 50%"
+        ></v-text-field>
+      </v-col>
+      <v-col cols="3">
+        <v-select
+          :items="items"
+          label="Solo field"
+          dense
+          solo
+          placeholder="Filter By Region"
+          background-color="hsl(209, 23%, 22%);"
+        ></v-select>
+      </v-col>
+    </v-row>
     <v-row>
       <v-col v-for="n in 4" :key="n" cols="12" sm="3">
         <v-card class="mx-auto" max-width="400">
