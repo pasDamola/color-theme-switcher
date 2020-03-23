@@ -1,5 +1,13 @@
 <template class="dark_background">
   <v-container>
+    <v-toolbar dense floating style="background : hsl(209, 23%, 22%);">
+      <v-text-field
+        hide-details
+        prepend-inner-icon="search"
+        single-line
+        dense
+      ></v-text-field>
+    </v-toolbar>
     <v-row>
       <v-col v-for="n in 4" :key="n" cols="12" sm="3">
         <v-card class="mx-auto" max-width="400">
