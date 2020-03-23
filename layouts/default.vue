@@ -1,8 +1,16 @@
 <template>
-  <v-app style="background : hsl(207, 26%, 17%);">
-    <v-app-bar fixed style="background : hsl(209, 23%, 22%)">
-      Where in the World?
-      <v-spacer />
+  <v-app>
+    <v-app-bar fixed>
+      <v-container>
+        <v-layout justify-space-between align-center>
+          Where in the World?
+          <v-spacer></v-spacer>
+          <v-btn icon @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+            <v-icon>mdi-weather-night</v-icon>
+          </v-btn>
+          Dark Mode
+        </v-layout>
+      </v-container>
     </v-app-bar>
     <v-content style="padding: 64px 0px 0px 0px;">
       <nuxt />

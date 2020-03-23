@@ -1,4 +1,4 @@
-<template class="dark_background">
+<template>
   <v-container>
     <v-row>
       <v-col cols="9">
@@ -8,7 +8,6 @@
           single-line
           dense
           solo
-          background-color="hsl(209, 23%, 22%)"
           placeholder="Search for a country..."
           style="width : 50%"
         ></v-text-field>
@@ -20,7 +19,6 @@
           dense
           solo
           placeholder="Filter By Region"
-          background-color="hsl(209, 23%, 22%);"
         ></v-select>
       </v-col>
     </v-row>
@@ -96,18 +94,4 @@ export default {
   })
 }
 </script>
-<style>
-.dark_background {
-  background-color: hsl(207, 26%, 17%);
-}
-
-.v-list
-  .v-select-list
-  .v-sheet
-  .v-sheet--tile
-  .theme--dark
-  .v-list--dense
-  .theme--dark {
-  background-color: hsl(209, 23%, 22%);
-}
-</style>
+<style></style>
