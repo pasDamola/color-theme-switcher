@@ -26,7 +26,7 @@
     </v-row>
     <v-row>
       <v-col v-for="n in 4" :key="n" cols="12" sm="3">
-        <v-card class="mx-auto" max-width="400">
+        <v-card class="mx-auto">
           <v-img
             class="white--text align-end"
             height="200px"
@@ -99,5 +99,15 @@ export default {
 <style>
 .dark_background {
   background-color: hsl(207, 26%, 17%);
+}
+
+.v-list
+  .v-select-list
+  .v-sheet
+  .v-sheet--tile
+  .theme--dark
+  .v-list--dense
+  .theme--dark {
+  background-color: hsl(209, 23%, 22%);
 }
 </style>
