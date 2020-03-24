@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-app-bar fixed>
+  <v-app color="contain">
+    <v-app-bar fixed color="header">
       <v-container>
         <v-layout justify-space-between align-center>
           Where in the World?
@@ -12,7 +12,10 @@
         </v-layout>
       </v-container>
     </v-app-bar>
-    <v-content style="padding: 64px 0px 0px 0px;">
+    <v-content
+      style="padding: 64px 0px 0px 0px;"
+      :style="{ background: $vuetify.theme.currentTheme.contain }"
+    >
       <nuxt />
     </v-content>
   </v-app>
@@ -22,6 +25,12 @@
 export default {
   data() {
     return {}
+  },
+  computed: {
+    theme() {
+      console.log(this.$vuetify.theme.currentTheme)
+      return this.$vuetify.theme.dark ? 'dark' : 'light'
+    }
   }
 }
 </script>

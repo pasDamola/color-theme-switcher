@@ -1,8 +1,9 @@
 <template>
-  <v-container>
+  <v-container color="body">
     <v-row>
       <v-col cols="9">
         <v-text-field
+          v-model="search"
           hide-details
           prepend-icon="mdi-magnify"
           single-line
@@ -68,7 +69,8 @@ export default {
   },
   data() {
     return {
-      selectedRegion: null
+      selectedRegion: null,
+      search: ''
     }
   },
   computed: {
