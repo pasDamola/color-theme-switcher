@@ -22,9 +22,9 @@
           dense
           solo
           placeholder="Filter By Region"
-          @input="selectRegion()"
           background-color="header"
           item-color="header"
+          @input="selectRegion()"
         ></v-select>
       </v-col>
     </v-row>
@@ -99,4 +99,13 @@ export default {
   }
 }
 </script>
-<style></style>
+<style lang="scss" scoped>
+.v-menu__content {
+  .theme--dark.v-list {
+    background-color: #2b3945;
+  }
+  .theme--light.v-list {
+    background-color: #ffffff;
+  }
+}
+</style>
