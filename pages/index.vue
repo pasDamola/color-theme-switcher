@@ -1,5 +1,5 @@
 <template>
-  <v-container color="body">
+  <v-container>
     <v-row>
       <v-col cols="9">
         <v-text-field
@@ -11,6 +11,7 @@
           solo
           placeholder="Search for a country..."
           style="width : 50%"
+          background-color="header"
         ></v-text-field>
       </v-col>
       <v-col cols="3">
@@ -22,6 +23,8 @@
           solo
           placeholder="Filter By Region"
           @input="selectRegion()"
+          background-color="header"
+          item-color="header"
         ></v-select>
       </v-col>
     </v-row>
