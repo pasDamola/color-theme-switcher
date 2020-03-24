@@ -14,11 +14,13 @@
       </v-col>
       <v-col cols="3">
         <v-select
-          :items="getRegions"
+          v-model="selectedRegion"
+          :items="allRegions"
           label="Solo field"
           dense
           solo
           placeholder="Filter By Region"
+          @input="selectRegion()"
         ></v-select>
       </v-col>
     </v-row>
@@ -61,17 +63,34 @@ export default {
     const countriesResponse = await axios.get(Config.endPoints.allCountries)
     const allCountries = countriesResponse.data
     store.commit(Config.mutations.LOAD_COUNTRIES, allCountries)
+    const allRegions = allCountries.map((country) => country.region)
+    store.commit(Config.mutations.LOAD_COUNTRY_REGIONS, allRegions)
   },
   data() {
-    return {}
+    return {
+      selectedRegion: null
+    }
   },
   computed: {
-    getRegions() {
-      return this.$store.getters.getRegions
-    },
     ...mapState({
-      allCountries: (state) => state.allCountries
+      allCountries: (state) => state.allCountries,
+      allRegions: (state) => state.allCountryRegions
     })
+  },
+  methods: {
+    async selectRegion() {
+      const regionPostData = this.selectedRegion
+      console.log(regionPostData)
+      const countriesByRegionResponse = await axios.get(
+        `${
+          Config.endPoints.fetchCountriesByRegion
+        }${regionPostData.toLowerCase()}`
+      )
+      console.log(countriesByRegionResponse)
+      const countriesByRegion = countriesByRegionResponse.data
+      console.log(countriesByRegion)
+      this.$store.commit(Config.mutations.LOAD_COUNTRIES, countriesByRegion)
+    }
   }
 }
 </script>

@@ -3,10 +3,12 @@ const baseUrl = 'https://restcountries.eu/rest/v2/'
 const Config = {
   baseUrl,
   endPoints: {
-    allCountries: `${baseUrl}all`
+    allCountries: `${baseUrl}all`,
+    fetchCountriesByRegion: `${baseUrl}region/`
   },
   mutations: {
-    LOAD_COUNTRIES: 'LOAD_COUNTRIES'
+    LOAD_COUNTRIES: 'LOAD_COUNTRIES',
+    LOAD_COUNTRY_REGIONS: 'LOAD_COUNTRY_REGIONS'
   }
 }
 
