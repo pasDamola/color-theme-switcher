@@ -14,7 +14,6 @@
       </v-col>
       <v-col cols="3">
         <v-select
-          :items="items"
           label="Solo field"
           dense
           solo
@@ -23,64 +22,28 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col v-for="n in 4" :key="n" cols="12" sm="3">
+      <v-col v-for="country in allCountries" :key="country" cols="12" sm="3">
         <v-card class="mx-auto">
           <v-img
             class="white--text align-end"
             height="200px"
-            src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+            :src="country.flag"
           >
-            <v-card-title>Top 10 Australian beaches</v-card-title>
           </v-img>
-
-          <v-card-subtitle class="pb-0">Number 10</v-card-subtitle>
-
-          <v-card-text class="text--primary">
-            <div>Whitehaven Beach</div>
-
-            <div>Whitsunday Island, Whitsunday Islands</div>
+          <v-card-title class="pb-0">{{ country.name }}</v-card-title>
+          <v-spacer></v-spacer>
+          <v-card-text>
+            <div>
+              Population:
+              {{
+                country.population
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+              }}
+            </div>
+            <div>Region: {{ country.region }}</div>
+            <div>Capital: {{ country.capital }}</div>
           </v-card-text>
-
-          <v-card-actions>
-            <v-btn color="orange" text>
-              Share
-            </v-btn>
-
-            <v-btn color="orange" text>
-              Explore
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col v-for="n in 4" :key="n" cols="12" sm="3">
-        <v-card class="mx-auto" max-width="400">
-          <v-img
-            class="white--text align-end"
-            height="200px"
-            src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-          >
-            <v-card-title>Top 10 Australian beaches</v-card-title>
-          </v-img>
-
-          <v-card-subtitle class="pb-0">Number 10</v-card-subtitle>
-
-          <v-card-text class="text--primary">
-            <div>Whitehaven Beach</div>
-
-            <div>Whitsunday Island, Whitsunday Islands</div>
-          </v-card-text>
-
-          <v-card-actions>
-            <v-btn color="orange" text>
-              Share
-            </v-btn>
-
-            <v-btn color="orange" text>
-              Explore
-            </v-btn>
-          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -88,10 +51,24 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { mapState } from 'vuex'
+import Config from '../services/Config'
+
 export default {
-  data: () => ({
-    items: ['Foo', 'Bar', 'Fizz', 'Buzz']
-  })
+  async asyncData({ store, params }) {
+    const countriesResponse = await axios.get(Config.endPoints.allCountries)
+    const allCountries = countriesResponse.data
+    store.commit(Config.mutations.LOAD_COUNTRIES, allCountries)
+  },
+  data() {
+    return {}
+  },
+  computed: {
+    ...mapState({
+      allCountries: (state) => state.allCountries
+    })
+  }
 }
 </script>
 <style></style>
