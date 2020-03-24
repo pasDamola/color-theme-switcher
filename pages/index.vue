@@ -14,6 +14,7 @@
       </v-col>
       <v-col cols="3">
         <v-select
+          :items="getRegions"
           label="Solo field"
           dense
           solo
@@ -22,7 +23,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col v-for="country in allCountries" :key="country" cols="12" sm="3">
+      <v-col v-for="(country, id) in allCountries" :key="id" cols="12" sm="3">
         <v-card class="mx-auto">
           <v-img
             class="white--text align-end"
@@ -65,6 +66,9 @@ export default {
     return {}
   },
   computed: {
+    getRegions() {
+      return this.$store.getters.getRegions
+    },
     ...mapState({
       allCountries: (state) => state.allCountries
     })
