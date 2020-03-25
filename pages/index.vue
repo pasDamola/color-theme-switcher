@@ -12,6 +12,7 @@
           placeholder="Search for a country..."
           style="width : 50%"
           background-color="header"
+          @keyup="updateData()"
         ></v-text-field>
       </v-col>
       <v-col cols="3">
@@ -95,6 +96,10 @@ export default {
       const countriesByRegion = countriesByRegionResponse.data
       console.log(countriesByRegion)
       this.$store.commit(Config.mutations.LOAD_COUNTRIES, countriesByRegion)
+    },
+    updateData() {
+      let num = 1
+      console.log(++num)
     }
   }
 }
