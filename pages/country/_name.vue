@@ -1,8 +1,15 @@
 <template>
   <v-container>
-    <v-btn small color="header" elevation="5" @click="goHome()"
-      ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
-    >
+    <v-row class="mt-9">
+      <v-btn small color="header" elevation="5" @click="goHome()"
+        ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
+      >
+    </v-row>
+    <v-row class="mt-10">
+      <v-col cols="8">
+        <img :src="oneCountry.flag" style="max-width: 150%" />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 <script>
