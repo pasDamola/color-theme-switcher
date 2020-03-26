@@ -12,7 +12,6 @@
           placeholder="Search for a country..."
           style="width : 50%"
           background-color="header"
-          @keyup="updateData()"
         ></v-text-field>
       </v-col>
       <v-col cols="3">
@@ -30,7 +29,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col v-for="(country, id) in allCountries" :key="id" cols="12" sm="3">
+      <v-col v-for="(country, id) in filteredList" :key="id" cols="12" sm="3">
         <v-card class="mx-auto">
           <v-img
             class="white--text align-end"
@@ -81,7 +80,12 @@ export default {
     ...mapState({
       allCountries: (state) => state.allCountries,
       allRegions: (state) => state.allCountryRegions
-    })
+    }),
+    filteredList() {
+      return this.$store.state.allCountries.filter((country) => {
+        return country.name.toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
   },
   methods: {
     async selectRegion() {
