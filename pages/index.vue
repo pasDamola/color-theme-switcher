@@ -108,7 +108,7 @@ export default {
       this.$store.commit(Config.mutations.LOAD_COUNTRIES, countriesByRegion)
     },
     getCountryDetails(country) {
-      console.log(country)
+      
     }
   }
 }
