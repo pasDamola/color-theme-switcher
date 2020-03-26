@@ -7,7 +7,7 @@
     </v-row>
     <v-row class="mt-10">
       <v-col cols="8">
-        <img :src="oneCountry.flag" style="max-width: 150%" />
+        <img :src="oneCountry.flag" style="max-width: 100%" />
       </v-col>
     </v-row>
   </v-container>
