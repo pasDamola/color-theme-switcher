@@ -29,7 +29,7 @@
     </v-row>
     <v-row>
       <v-col v-for="(country, id) in filteredList" :key="id" cols="12" sm="3">
-        <v-hover v-slot:default="{ hover }" open-delay="200">
+        <v-hover v-slot:default="{ hover }" open-delay="100">
           <v-card
             class="mx-auto"
             :elevation="hover ? 16 : 0"
@@ -108,7 +108,7 @@ export default {
       this.$store.commit(Config.mutations.LOAD_COUNTRIES, countriesByRegion)
     },
     getCountryDetails(country) {
-      
+      this.$router.push({ path: `/country/${country.name}` })
     }
   }
 }

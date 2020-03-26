@@ -1,6 +1,7 @@
 export const state = () => ({
   allCountries: [],
-  allCountryRegions: []
+  allCountryRegions: [],
+  oneCountry: []
 })
 
 export const mutations = {
@@ -9,5 +10,8 @@ export const mutations = {
   },
   LOAD_COUNTRY_REGIONS(state, regions) {
     state.allCountryRegions = regions
+  },
+  LOAD_ONE_COUNTRY(state, country) {
+    state.oneCountry = country
   }
 }
