@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <p>{{ oneCountry.capital }}</p>
+    <v-btn small color="header" elevation="5" @click="goHome()"
+      ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
+    >
   </v-container>
 </template>
 <script>
@@ -29,6 +31,11 @@ export default {
     ...mapState({
       oneCountry: (state) => state.oneCountry
     })
+  },
+  methods: {
+    goHome() {
+      this.$router.push({ path: '/' })
+    }
   }
 }
 </script>
