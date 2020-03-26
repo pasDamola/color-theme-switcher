@@ -4,7 +4,8 @@ const Config = {
   baseUrl,
   endPoints: {
     allCountries: `${baseUrl}all`,
-    fetchCountriesByRegion: `${baseUrl}region/`
+    fetchCountriesByRegion: `${baseUrl}region/`,
+    getCountryByName: `${baseUrl}name/`
   },
   mutations: {
     LOAD_COUNTRIES: 'LOAD_COUNTRIES',

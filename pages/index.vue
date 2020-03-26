@@ -23,35 +23,41 @@
           solo
           placeholder="Filter By Region"
           background-color="header"
-          item-color="header"
           @input="selectRegion()"
         ></v-select>
       </v-col>
     </v-row>
     <v-row>
       <v-col v-for="(country, id) in filteredList" :key="id" cols="12" sm="3">
-        <v-card class="mx-auto">
-          <v-img
-            class="white--text align-end"
-            height="200px"
-            :src="country.flag"
+        <v-hover v-slot:default="{ hover }" open-delay="200">
+          <v-card
+            class="mx-auto"
+            :elevation="hover ? 16 : 0"
+            color="header"
+            @click="getCountryDetails(country)"
           >
-          </v-img>
-          <v-card-title class="pb-0">{{ country.name }}</v-card-title>
-          <v-spacer></v-spacer>
-          <v-card-text>
-            <div>
-              Population:
-              {{
-                country.population
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-              }}
-            </div>
-            <div>Region: {{ country.region }}</div>
-            <div>Capital: {{ country.capital }}</div>
-          </v-card-text>
-        </v-card>
+            <v-img
+              class="white--text align-end"
+              height="200px"
+              :src="country.flag"
+            >
+            </v-img>
+            <v-card-title class="pb-0">{{ country.name }}</v-card-title>
+            <v-spacer></v-spacer>
+            <v-card-text>
+              <div>
+                Population:
+                {{
+                  country.population
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                }}
+              </div>
+              <div>Region: {{ country.region }}</div>
+              <div>Capital: {{ country.capital }}</div>
+            </v-card-text>
+          </v-card>
+        </v-hover>
       </v-col>
     </v-row>
   </v-container>
@@ -101,9 +107,8 @@ export default {
       console.log(countriesByRegion)
       this.$store.commit(Config.mutations.LOAD_COUNTRIES, countriesByRegion)
     },
-    updateData() {
-      let num = 1
-      console.log(++num)
+    getCountryDetails(country) {
+      console.log(country)
     }
   }
 }
