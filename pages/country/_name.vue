@@ -5,11 +5,14 @@
         ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
       >
     </v-row>
-    <v-row class="mt-10">
-      <v-col cols="8">
+    <v-layout class="mt-10" wrap>
+      <v-flex sm12 md6>
         <img :src="oneCountry.flag" style="max-width: 100%" />
-      </v-col>
-    </v-row>
+      </v-flex>
+      <v-flex sm12 md6>
+        <img :src="oneCountry.flag" style="max-width: 100%" />
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 <script>
