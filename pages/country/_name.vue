@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container grid-list-md>
     <v-row class="mt-9">
       <v-btn small color="header" elevation="5" @click="goHome()"
         ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
@@ -10,27 +10,43 @@
         <img :src="oneCountry.flag" style="max-width: 100%" />
       </v-flex>
       <v-spacer></v-spacer>
-      <v-flex sm6 md3>
-        <p>
-          <b style="font-weight: 800, font-size: 100px">{{
-            oneCountry.name
-          }}</b>
-        </p>
-        <p><b>Native Name:</b>{{ oneCountry.nativeName }}</p>
-        <p><b>Population:</b>{{ oneCountry.population }}</p>
-        <p><b>Region:</b>{{ oneCountry.region }}</p>
-        <p><b>Sub Region:</b>{{ oneCountry.subregion }}</p>
-        <p><b>Capital:</b>{{ oneCountry.capital }}</p>
-      </v-flex>
-      <v-flex sm6 md3>
-        <p><b>Top Level Domain:</b>{{ oneCountry.topLevelDomain[0] }}</p>
-        <p><b>Currencies:</b>{{ oneCountry.currencies[0]['name'] }}</p>
-        <div>
-          <b>Languages:</b>
-          <span v-for="(language, id) in oneCountry.languages" :key="id">
-            {{ language['name'], }}
-          </span>
-        </div>
+      <v-flex sm12 md5>
+        <v-layout wrap>
+          <v-flex sm12 md5>
+            <p>
+              <b class="display-1">{{ oneCountry.name }}</b>
+            </p>
+            <p>Native Name:{{ oneCountry.nativeName }}</p>
+            <p>Population:{{ oneCountry.population }}</p>
+            <p>Region:{{ oneCountry.region }}</p>
+            <p>Sub Region:{{ oneCountry.subregion }}</p>
+            <p>Capital:{{ oneCountry.capital }}</p>
+          </v-flex>
+          <v-spacer></v-spacer>
+          <v-flex sm12 md5>
+            <p><b>Top Level Domain:</b>{{ oneCountry.topLevelDomain[0] }}</p>
+            <p><b>Currencies:</b>{{ oneCountry.currencies[0]['name'] }}</p>
+            <div>
+              <b>Languages:</b>
+              <span v-for="(language, id) in oneCountry.languages" :key="id">
+                {{ language['name'], }}
+              </span>
+            </div>
+          </v-flex>
+        </v-layout>
+        <v-spacer></v-spacer>
+        <v-layout wrap>
+          <p>
+            <b>Border Countries:</b>
+            <v-btn
+              class="ma-auto"
+              v-for="(border, id) in oneCountry.borders.slice(0, 3)"
+              :key="id"
+              color="header"
+              >{{ border }}</v-btn
+            >
+          </p>
+        </v-layout>
       </v-flex>
     </v-layout>
   </v-container>
