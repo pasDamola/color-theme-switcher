@@ -36,7 +36,7 @@
         </v-layout>
         <v-spacer></v-spacer>
         <v-layout wrap>
-          <p>
+          <p v-if="oneCountry.borders.length > 0">
             <b>Border Countries:</b>
             <v-btn
               class="ma-auto"
